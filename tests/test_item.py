@@ -1,13 +1,39 @@
-from src import item
+from src.item import Item
 
-test = item.Item('nokia', 150, 3)
+test = Item('nokia', 150, 3)
+
+
 def test_item():
+    """Тестируем присвоение значений"""
     assert test.name == 'nokia'
     assert test.price == 150
     assert test.quantity == 3
 
+
 def test_calculate_total_price():
-    assert item.Item.calculate_total_price(test) == 450
+    """Тест суммы стоимости всех товаров одного типа"""
+    assert Item.calculate_total_price(test) == 450
+
 
 def test_apply_discount():
-    assert item.Item.apply_discount(test) == 150
+    """Тест применения скидки"""
+    assert Item.apply_discount(test) == 150
+
+def test_name_setter():
+    """Тест изменения названия товара"""
+    test.name = "motorolla"
+    assert test.name == "motorolla"
+
+
+def test_instantiate_from_csv():
+    Item.instantiate_from_csv()
+    assert len(Item.all) == 5
+
+    item1 = Item.all[0]
+    assert item1.name == 'Смартфон'
+
+
+def test_strind_to_number():
+    assert Item.string_to_number('5') == 5
+    assert Item.string_to_number('5.0') == 5
+    assert Item.string_to_number('5.5') == 5

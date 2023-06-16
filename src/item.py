@@ -23,17 +23,24 @@ class Item:
     def __str__(self):
         return self.__name
 
+    def __add__(self, other):
+        if not isinstance(other, Item):
+            return 'Складывать можно только объекты Item и дочерние от них'
+        return self.quantity + other.quantity
+
+
     @property
     def name(self):
         return self.__name
 
     @name.setter
     def name(self, name):
+
         if len(name) <= 10:
             self.__name = name
             return self.__name
         else:
-            return 'Product name more than 10 characters'
+            return ValueError('Product name more than 10 characters')
 
     @staticmethod
     def string_to_number(number):

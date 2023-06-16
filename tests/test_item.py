@@ -37,3 +37,9 @@ def test_strind_to_number():
     assert Item.string_to_number('5') == 5
     assert Item.string_to_number('5.0') == 5
     assert Item.string_to_number('5.5') == 5
+
+def test_repr_and_str():
+    """Тест для магических методов __repr__ and __str__"""
+    item2: Item = Item("Микроволновка", 5000, 15)
+    assert repr(item2) == "Item('Микроволновка', 5000, 15)"
+    assert str(item2) == 'Микроволновка'

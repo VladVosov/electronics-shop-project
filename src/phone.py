@@ -5,12 +5,12 @@ class Phone(Item):
         self._number_of_sim = None
         self.number_of_sim = number_of_sim
 
-        @property
-        def number_of_sim(self):
+    @property
+    def number_of_sim(self):
             return self._number_of_sim
 
-        @number_of_sim.setter
-        def number_of_sim(self, number):
+    @number_of_sim.setter
+    def number_of_sim(self, number):
             if number <= 0:
                 raise ValueError ('Количество физических SIM-карт должно быть целым числом больше нуля')
             self._number_of_sim = number
